@@ -53,7 +53,7 @@ public class MessagePanelController {
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
-                Scene scene = new Scene(root, 800, 500);
+                Scene scene = new Scene(root, 400, 700);
                 primaryStage.setScene(scene);
                 primaryStage.show();
                 break;
@@ -62,7 +62,7 @@ public class MessagePanelController {
 
     @FXML
     void onUserListViewClick(MouseEvent event) {
-        Message temp = HelloApplication.loggedInAccount.getMessages().get(usersListView.getSelectionModel().getSelectedIndex());
+        ChatPanelController.message = HelloApplication.loggedInAccount.getMessages().get(usersListView.getSelectionModel().getSelectedIndex());
         Stage stage = (Stage) addBtn.getScene().getWindow();
         stage.close();
         Stage primaryStage = new Stage();
@@ -72,7 +72,7 @@ public class MessagePanelController {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        Scene scene = new Scene(root, 800, 500);
+        Scene scene = new Scene(root, 400, 700);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
