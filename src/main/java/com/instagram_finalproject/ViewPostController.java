@@ -1,5 +1,7 @@
 package com.instagram_finalproject;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,12 +14,18 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-import static com.sun.javafx.scene.control.skin.Utils.getResource;
 
 public class ViewPostController {
-    Post post = null;
-    int likes = 0;
-    int disLikes=0;
+    static Post post = null;
+    public void initialize(){
+        lblLikes.setText(String.valueOf(post.getLikeAccount().size()));
+        lblDisLikes.setText(String.valueOf(post.getDisLikeAccount().size()));
+        lblPostText.setText(post.getText());
+        ObservableList<String> observableList = FXCollections.observableArrayList();
+        for (Comment a: post.getCommentAccount())
+            observableList.add(a.getCom());
+        lvComments.setItems(observableList);
+    }
     @FXML
     private Button btnComment;
 
@@ -34,26 +42,15 @@ public class ViewPostController {
     private Label lblPostText;
 
     @FXML
-    private Label lblUserName;
-
-    @FXML
     private Label lblDisLikes;
 
-    public String getLblDisLikes() {
-        return ("Dislikes:"+ String.valueOf(disLikes));
-    }
-
-    public void setLblDisLikes(Label lblDisLikes) {
-        this.lblDisLikes = lblDisLikes;
-    }
-
     @FXML
-    private ListView<?> lvComments;
+    private ListView<String> lvComments;
 
     @FXML
     void pressOnBtnLike(ActionEvent event) {
         post.likeAccount.add(HelloApplication.loggedInAccount);
-        likes++;
+        initialize();
     }
 
     @FXML
@@ -67,38 +64,15 @@ public class ViewPostController {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        Scene scene = new Scene(root, 800, 500);
+        Scene scene = new Scene(root, 400, 700);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
 
-    public String getLblLikes() {
-        return ("Likes:"+ String.valueOf(likes));
-    }
-
-    public void setLblLikes(Label lblLikes) {
-        this.lblLikes = lblLikes;
-    }
-
-    public Label getLblPostText() {
-        return lblPostText;
-    }
-
-    public void setLblPostText(Label lblPostText) {
-        this.lblPostText = lblPostText;
-    }
-
-    public Label getLblUserName() {
-        return lblUserName;
-    }
-
-    public void setLblUserName(Label lblUserName) {
-        this.lblUserName = lblUserName;
-    }
-
     @FXML
     void pressonbtnDislike(ActionEvent event) {
-        disLikes++;
+        post.disLikeAccount.add(HelloApplication.loggedInAccount);
+        initialize();
     }
 
 }
