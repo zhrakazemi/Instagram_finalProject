@@ -15,6 +15,7 @@ public class Account {
     private ArrayList<Account> followers = new ArrayList<>();
     private ArrayList<Post> posts = new ArrayList<>();
     private ArrayList<Message> messages = new ArrayList<>();
+    private ArrayList<Notification> notifications = new ArrayList<>();
     static ArrayList<Account> AllAccount = new ArrayList<>();
 
 
@@ -118,6 +119,14 @@ public class Account {
 
     public ArrayList<Message> getMessages() {
         return messages;
+    }
+
+    public ArrayList<Notification> getNotifications() {
+        return notifications;
+    }
+
+    public void setNotifications(ArrayList<Notification> notifications) {
+        this.notifications = notifications;
     }
 
     public void setMessages(ArrayList<Message> messages) {

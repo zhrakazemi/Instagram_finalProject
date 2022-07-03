@@ -32,7 +32,6 @@
       </Button>
       <ListView fx:id="lvComments" layoutX="38.0" layoutY="446.0" prefHeight="200.0" prefWidth="321.0" />
       <Label fx:id="lblLikes" layoutX="40.0" layoutY="406.0" prefHeight="25.0" prefWidth="112.0" text="Label" />
-      <Label fx:id="lblUserName" layoutX="40.0" layoutY="86.0" prefHeight="28.0" prefWidth="134.0" text="Label" />
       <Label fx:id="lblPostText" layoutX="38.0" layoutY="125.0" prefHeight="216.0" prefWidth="321.0" text="Label" />
       <Label fx:id="lblDisLikes" layoutX="128.0" layoutY="410.0" text="Label" />
    </children>
