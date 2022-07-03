@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="700.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.instagram_finalproject.accountoptions.AccountOptionsController">
+   <children>
+      <Button layoutX="22.0" layoutY="62.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="166.0" text="change account info" />
+      <Button layoutX="212.0" layoutY="177.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="166.0" text="followings" />
+      <Button layoutX="212.0" layoutY="62.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="166.0" text="notifications" />
+      <Button layoutX="22.0" layoutY="177.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="166.0" text="followers" />
+      <Button layoutX="212.0" layoutY="118.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="166.0" text="list my posts" />
+      <Button layoutX="22.0" layoutY="233.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="166.0" text="favourites" />
+      <Button layoutX="22.0" layoutY="118.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="166.0" text="add post" />
+   </children>
+</AnchorPane>
