@@ -10,6 +10,7 @@ public class Account {
     private String email;
     private String birthDate;   //
     private String bio;
+    private boolean privateAccount = false;
     private ArrayList<Account> followings = new ArrayList<>();
     private ArrayList<Account> followers = new ArrayList<>();
     private ArrayList<Post> posts = new ArrayList<>();
@@ -105,6 +106,14 @@ public class Account {
     public void setPosts(ArrayList<Post> posts) {
         this.posts = posts;
     }
+
+    public boolean isPrivateAccount() {
+        return privateAccount;
+    }
+
+    public void setPrivateAccount(boolean privateAccount) {
+        this.privateAccount = privateAccount;
+    }
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
     public Account(String username, String password, String name, String lastName, String email, String birthDate, String bio) {
@@ -116,4 +125,6 @@ public class Account {
         this.birthDate = birthDate;
         this.bio = bio;
     }
+
+
 }
