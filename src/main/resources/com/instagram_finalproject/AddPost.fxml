@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="700.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.instagram_finalproject.AddPostController">
+   <children>
+      <ImageView fitHeight="161.0" fitWidth="198.0" layoutX="120.0" layoutY="-26.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../Downloads/logo-ig-png-32469.png" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="677.0" layoutX="10.0" layoutY="11.0" stroke="BLACK" strokeType="INSIDE" width="379.0" />
+      <Label layoutX="45.0" layoutY="114.0" text="Please enter the text:">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtPostText" alignment="TOP_LEFT" layoutX="39.0" layoutY="156.0" prefHeight="205.0" prefWidth="319.0" promptText="post text" />
+      <Button fx:id="btnDone" layoutX="55.0" layoutY="401.0" mnemonicParsing="false" onAction="#pressOnBtnDone" style="-fx-background-color: #0404ee;" text="Done" textFill="#fdfdfd">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnBack" layoutX="147.0" layoutY="401.0" mnemonicParsing="false" onAction="#pressOnBtnBack" text="Back">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
