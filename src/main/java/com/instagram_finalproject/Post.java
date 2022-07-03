@@ -24,10 +24,8 @@ public class Post
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 
-    public Post(String text, ArrayList likeAccount, ArrayList commentAccount) {
+    public Post(String text) {
         this.text = text;
-        this.likeAccount = likeAccount;
-        CommentAccount = commentAccount;
     }
 
 }
