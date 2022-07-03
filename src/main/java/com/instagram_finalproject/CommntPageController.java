@@ -12,10 +12,12 @@ Post post = null;
 
     @FXML
     private TextField txtComment;
-        Comment comment = new Comment(txtComment.getText() , null , HelloApplication.loggedInAccount);
     @FXML
     void pressOnBtnDone(ActionEvent event) {
+        Comment comment = new Comment(txtComment.getText() , null , HelloApplication.loggedInAccount);
         post.CommentAccount.add(comment);
+        post.account.getNotifications().add(new Notification(HelloApplication.loggedInAccount.getUsername() + " write a comment for your post"
+                , post));
     }
 
 }

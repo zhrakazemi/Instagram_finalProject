@@ -17,15 +17,17 @@ import java.io.IOException;
 
 public class ViewPostController {
     static Post post = null;
-    public void initialize(){
+
+    public void initialize() {
         lblLikes.setText(String.valueOf(post.getLikeAccount().size()));
         lblDisLikes.setText(String.valueOf(post.getDisLikeAccount().size()));
         lblPostText.setText(post.getText());
         ObservableList<String> observableList = FXCollections.observableArrayList();
-        for (Comment a: post.getCommentAccount())
+        for (Comment a : post.getCommentAccount())
             observableList.add(a.getCom());
         lvComments.setItems(observableList);
     }
+
     @FXML
     private Button btnComment;
 
@@ -49,7 +51,13 @@ public class ViewPostController {
 
     @FXML
     void pressOnBtnLike(ActionEvent event) {
-        post.likeAccount.add(HelloApplication.loggedInAccount);
+        if (post.likeAccount.contains(HelloApplication.loggedInAccount))
+            post.likeAccount.remove(HelloApplication.loggedInAccount);
+        else {
+            post.likeAccount.add(HelloApplication.loggedInAccount);
+            post.account.getNotifications().add(new Notification(HelloApplication.loggedInAccount.getUsername() + " liked your post"
+                    , post));
+        }
         initialize();
     }
 
@@ -71,7 +79,13 @@ public class ViewPostController {
 
     @FXML
     void pressonbtnDislike(ActionEvent event) {
-        post.disLikeAccount.add(HelloApplication.loggedInAccount);
+        if (post.disLikeAccount.contains(HelloApplication.loggedInAccount))
+            post.disLikeAccount.remove(HelloApplication.loggedInAccount);
+        else {
+            post.disLikeAccount.add(HelloApplication.loggedInAccount);
+            post.account.getNotifications().add(new Notification(HelloApplication.loggedInAccount.getUsername() + " disliked your post"
+                    , post));
+        }
         initialize();
     }
 
