@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="700.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.instagram_finalproject.AccountManagementSettingController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="680.0" layoutX="7.0" layoutY="11.0" stroke="BLACK" strokeType="INSIDE" width="384.0" />
+      <Label layoutX="47.0" layoutY="38.0" text="Setting">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Line endX="100.0" layoutX="131.0" layoutY="72.0" startX="-100.0" />
+      <Button fx:id="btnFavoritePost" layoutX="26.0" layoutY="122.0" mnemonicParsing="false" onAction="#pressOnBtnFavoritePsts" text="Favorite posts">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnMyFollowers" layoutX="27.0" layoutY="218.0" mnemonicParsing="false" onAction="#pressOnBtnMyFollowers" text="My Followers">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnMyFollowing" layoutX="25.0" layoutY="269.0" mnemonicParsing="false" onAction="#pressOnBtnMyFollowing" text="My Followings">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnFans" layoutX="30.0" layoutY="325.0" mnemonicParsing="false" onAction="#pressOnBtnMyFans" text="My Fans">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnMyIdol" layoutX="29.0" layoutY="380.0" mnemonicParsing="false" onAction="#pressOnBtnMyIdol" text="My Idol">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnBack" layoutX="30.0" layoutY="537.0" mnemonicParsing="false" onAction="#pressonBtnBack" text="Back">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnHatedPosts" layoutX="27.0" layoutY="168.0" mnemonicParsing="false" onAction="#pressOnBtnHatedPosts" text="Hated Posts">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnLogOut" layoutX="27.0" layoutY="434.0" mnemonicParsing="false" onAction="#pressOnBtnLogOut" text="LogOut">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnDeleteAccount" layoutX="28.0" layoutY="486.0" mnemonicParsing="false" onAction="#pressOnBtnDeleteAccount" text="Delete  Account">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
