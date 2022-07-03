@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="250.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.instagram_finalproject.Search">
+   <children>
+      <Rectangle fx:id="rec" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="234.0" layoutX="8.0" layoutY="6.0" stroke="BLACK" strokeType="INSIDE" width="384.0" />
+      <Label fx:id="lbl_search" layoutX="172.0" layoutY="22.0" prefHeight="22.0" prefWidth="65.0" text="Search">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Line fx:id="line1" endX="100.0" layoutX="60.0" layoutY="33.0" startX="-37.0">
+         <stroke>
+            <LinearGradient endX="1.0" endY="0.022727256471460455" startX="0.4393939312660333" startY="0.007575786474979285">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </stroke>
+      </Line>
+      <Line fx:id="line2" endX="8.4000244140625" layoutX="210.0" layoutY="33.0" startX="164.4000244140625">
+         <stroke>
+            <LinearGradient endX="0.18939397190556373" endY="1.0" startX="0.4166666802131769">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </stroke>
+      </Line>
+      <Label fx:id="lblAcc" layoutX="36.0" layoutY="115.0" text="-AccountName :">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txt_accountname" layoutX="174.0" layoutY="115.0" prefHeight="26.0" prefWidth="194.0" />
+      <Button fx:id="btn_search" layoutX="317.0" layoutY="162.0" mnemonicParsing="false" onMouseClicked="#clickSearch" text="search" />
+   </children>
+</AnchorPane>
