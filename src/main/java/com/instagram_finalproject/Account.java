@@ -14,6 +14,7 @@ public class Account {
     private ArrayList<Account> followings = new ArrayList<>();
     private ArrayList<Account> followers = new ArrayList<>();
     private ArrayList<Post> posts = new ArrayList<>();
+    private ArrayList<Message> messages = new ArrayList<>();
     static ArrayList<Account> AllAccount = new ArrayList<>();
 
 
@@ -114,7 +115,15 @@ public class Account {
     public void setPrivateAccount(boolean privateAccount) {
         this.privateAccount = privateAccount;
     }
-///////////////////////////////////////////////////////////////////////////////////////////////////
+
+    public ArrayList<Message> getMessages() {
+        return messages;
+    }
+
+    public void setMessages(ArrayList<Message> messages) {
+        this.messages = messages;
+    }
+    ///////////////////////////////////////////////////////////////////////////////////////////////////
 
     public Account(String username, String password, String name, String lastName, String email, String birthDate, String bio) {
         this.username = username;
