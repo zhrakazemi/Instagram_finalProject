@@ -48,6 +48,8 @@ public class ViewPostController {
 
     @FXML
     private ListView<String> lvComments;
+    @FXML
+    private Button btnSave;
 
     @FXML
     void pressOnBtnLike(ActionEvent event) {
@@ -75,6 +77,10 @@ public class ViewPostController {
         Scene scene = new Scene(root, 400, 700);
         primaryStage.setScene(scene);
         primaryStage.show();
+    }
+    @FXML
+    void pressOnBtnSave(ActionEvent event) {
+        HelloApplication.loggedInAccount.SavedPosts.add(post);
     }
 
     @FXML
