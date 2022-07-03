@@ -62,5 +62,12 @@ public class Post
         this.account = account;
     }
 
+    public Post (String accName, String text, int like, int dislike){
+        this.account.setUsername(accName);
+        this.text = text ;
+        this.like = like ;
+        this.dislike = dislike ;
+    }
+
 }
 
