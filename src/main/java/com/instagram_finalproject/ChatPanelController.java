@@ -53,12 +53,15 @@ public class ChatPanelController {
 
     @FXML
     void onSendBtnClick(ActionEvent event) {
-        if (message.getText().size() == 10) {
+        if (message.getText().size() == 10)
             message.getText().remove(0);
-            message.getText().add(HelloApplication.loggedInAccount.getName() + " : " + messageTxt.getText());
-        } else {
-            message.getText().add(HelloApplication.loggedInAccount.getName() + " : " + messageTxt.getText());
-        }
+        message.getText().add(HelloApplication.loggedInAccount.getName() + " : " + messageTxt.getText());
+        if (message.getPerson1().getUsername().equals(HelloApplication.loggedInAccount.getUsername()))
+            message.getPerson2().getNotifications().add(new Notification("You have a new message from " +
+                    HelloApplication.loggedInAccount.getUsername(), message));
+        else
+            message.getPerson1().getNotifications().add(new Notification("You have a new message from " +
+                    HelloApplication.loggedInAccount.getUsername(), message));
         observableList.add(HelloApplication.loggedInAccount.getName() + " : " + messageTxt.getText());
         massagesListview.setItems(observableList);
     }
