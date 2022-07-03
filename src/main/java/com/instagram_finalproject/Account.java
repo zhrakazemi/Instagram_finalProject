@@ -18,7 +18,7 @@ public class Account {
     private ArrayList<Notification> notifications = new ArrayList<>();
     static ArrayList<Account> AllAccount = new ArrayList<>();
 
-
+   public  ArrayList<Post>SavedPosts = new ArrayList<>();
 ////////////////////////////////////// Set & Get  //////////////////////////////////////
 
     public String getUsername() {
@@ -105,8 +105,8 @@ public class Account {
         return posts;
     }
 
-    public void setPosts(ArrayList<Post> posts) {
-        this.posts = posts;
+    public void setPosts(Post post) {
+        this.posts.add(post);
     }
 
     public boolean isPrivateAccount() {

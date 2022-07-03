@@ -36,6 +36,8 @@ static ArrayList<Account> accounts = new ArrayList<>();
 
     @FXML
     private Button btnMyFollowing;
+    @FXML
+    private Button btnEditPosts;
 
     @FXML
     private Button btnMyIdol;
@@ -160,6 +162,10 @@ static ArrayList<Account> accounts = new ArrayList<>();
 
     @FXML
     void pressonBtnBack(ActionEvent event) {
+
+    }
+    @FXML
+    void pressOnBtnEditPosts(ActionEvent event) {
 
     }
 
