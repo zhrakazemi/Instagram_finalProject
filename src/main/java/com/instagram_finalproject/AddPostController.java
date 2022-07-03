@@ -15,7 +15,7 @@ public class AddPostController {
 
     @FXML
     private TextField txtPostText;
-        Post post = new Post(txtPostText.getText());
+
     @FXML
     void pressOnBtnBack(ActionEvent event) {
 
@@ -23,9 +23,11 @@ public class AddPostController {
 
     @FXML
     void pressOnBtnDone(ActionEvent event) {
-        HelloApplication.loggedInAccount.setPosts(post);
-        if(!HelloApplication.loggedInAccount.isPrivateAccount()){
-        HelloApplication.allPosts.add(post);}
+        Post post = new Post(txtPostText.getText(), HelloApplication.loggedInAccount);
+        HelloApplication.loggedInAccount.getPosts().add(post);
+        if (!HelloApplication.loggedInAccount.isPrivateAccount()) {
+            HelloApplication.allPosts.add(post);
+        }
     }
 
 }

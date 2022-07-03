@@ -8,6 +8,7 @@ public class Post
     ArrayList<Account> likeAccount = new ArrayList<>() ;       //برای لایک ها
     ArrayList<Account> disLikeAccount = new ArrayList<>() ;       //برای دیس لایک ها
     ArrayList<Comment> CommentAccount = new ArrayList<>() ;   //برای کامنت ها
+    Account account;
 
 ////////////////////////////////////// Set & Get  //////////////////////////////////////
 
@@ -30,10 +31,19 @@ public class Post
     public void setDisLikeAccount(ArrayList<Account> disLikeAccount) {
         this.disLikeAccount = disLikeAccount;
     }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
+    }
     /////////////////////////////////////////////////////////////////////////////////////////////
 
-    public Post(String text) {
+    public Post(String text,Account account) {
         this.text = text;
+        this.account = account;
     }
 
 }
