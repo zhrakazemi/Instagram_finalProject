@@ -18,6 +18,9 @@ import java.io.IOException;
 public class Search {
 
     @FXML
+    private Button btn_celeb;
+
+    @FXML
     private Button btn_search;
 
     @FXML
@@ -104,4 +107,38 @@ public class Search {
 
     }
 
+    @FXML
+    void clickceleb(MouseEvent event) throws IOException {
+        //boolean foundCeleb = false ;
+        for (int i=0 ; i<Account.AllAccount.size() ; i++)
+        {
+             if (Account.AllAccount.get(i).isPrivateAccount()){
+
+                 for (int j=0 ; j<Account.AllAccount.get(i).getPosts().size() ; j++){
+
+                     if (Account.AllAccount.get(i).getPosts().get(j).getLike()>2){
+                         Post.getPopularPost().add(Account.AllAccount.get(i).getPosts().get(j));
+
+                     }
+                 }
+             }
+        }
+
+        if (Post.getPopularPost().size()!=0){
+            // بره که پست های آدم معروفا نشونش بده
+            // Post.getPopularPost()
+        }
+        else {
+            Parent parent = FXMLLoader.load(getClass().getResource("NotFindPopular.fxml"));
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow() ;
+            Scene scene = new Scene(parent);
+            stage.setResizable(false);    //وقتی این فرم ایجاد شده کسی اجازه بزرگتر یا کوچکتر کردن اون رو نداشته باشه
+            stage.setTitle("Instagram");
+            stage.setScene(scene);
+            stage.show();
+        }
+
+    }
+
 }
+//
