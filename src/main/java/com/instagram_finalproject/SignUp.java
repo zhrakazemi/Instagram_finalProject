@@ -67,6 +67,10 @@ public class SignUp {
         Account acc = new Account(txt_username.getText(),txt_pass.getText(),txt_name.getText(),txt_lastname.getText(),txt_email.getText(),txt_birthdate.getText(),txt_bio.getText()) ;
         Account.AllAccount.add(acc) ;
 
+        String SQLCom = String.format("INSERT  INTO allaccounts (username, password, name, lastName, email, birthDate, bio) values ('%s', '%s', '%s', '%s', '%s', '%s', '%s')",txt_username.getText(),txt_pass.getText(),txt_name.getText(),txt_lastname.getText(),txt_email.getText(),txt_birthdate.getText(),txt_bio.getText());
+        MySQLConnection sql = new MySQLConnection() ;
+        Boolean res  =  sql.ExecuteSQL(SQLCom) ;
+
         // رفتن به صفحه اکانت
 
     }
