@@ -64,8 +64,8 @@ static ArrayList<Account> accounts = new ArrayList<>();
         stage.close();
         Stage primaryStage = new Stage();
         //TODO
-        //AnchorPane root = (AnchorPane) FXMLLoader.load(getClass().getResource("***.fxml"));
-        //Scene scene = new Scene(root, 800, 500);
+        //AnchorPane root = (AnchorPane) FXMLLoader.load(HelloApplication.class.getResource("***.fxml"));
+        //Scene scene = new Scene(root, 400, 700);
        // primaryStage.setScene(scene);
         primaryStage.show();
     }
@@ -87,11 +87,11 @@ static ArrayList<Account> accounts = new ArrayList<>();
         Stage primaryStage = new Stage();
         AnchorPane root = null;
         try {
-            root = (AnchorPane) FXMLLoader.load(getClass().getResource("ShowList.fxml"));
+            root = (AnchorPane) FXMLLoader.load(HelloApplication.class.getResource("ShowList.fxml"));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        Scene scene = new Scene(root, 800, 500);
+        Scene scene = new Scene(root, 400, 700);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
@@ -106,11 +106,11 @@ static ArrayList<Account> accounts = new ArrayList<>();
         Stage primaryStage = new Stage();
         AnchorPane root = null;
         try {
-            root = (AnchorPane) FXMLLoader.load(getClass().getResource("ShowList.fxml"));
+            root = (AnchorPane) FXMLLoader.load(HelloApplication.class.getResource("ShowList.fxml"));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        Scene scene = new Scene(root, 800, 500);
+        Scene scene = new Scene(root, 400, 700);
          primaryStage.setScene(scene);
         primaryStage.show();
     }
@@ -125,11 +125,11 @@ static ArrayList<Account> accounts = new ArrayList<>();
         Stage primaryStage = new Stage();
         AnchorPane root = null;
         try {
-            root = (AnchorPane) FXMLLoader.load(getClass().getResource("ShowList.fxml"));
+            root = (AnchorPane) FXMLLoader.load(HelloApplication.class.getResource("ShowList.fxml"));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        Scene scene = new Scene(root, 800, 500);
+        Scene scene = new Scene(root, 400, 700);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
@@ -151,11 +151,11 @@ static ArrayList<Account> accounts = new ArrayList<>();
         Stage primaryStage = new Stage();
         AnchorPane root = null;
         try {
-            root = (AnchorPane) FXMLLoader.load(getClass().getResource("ShowList.fxml"));
+            root = (AnchorPane) FXMLLoader.load(HelloApplication.class.getResource("ShowList.fxml"));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        Scene scene = new Scene(root, 800, 500);
+        Scene scene = new Scene(root, 400, 700);
         primaryStage.setScene(scene);
         primaryStage.show();
     }

@@ -6,7 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
 public class EditPostController {
-
+    static Post post;
     @FXML
     private Button btnBack;
 
@@ -23,7 +23,7 @@ public class EditPostController {
 
     @FXML
     void pressOnBtnDone(ActionEvent event) {
-//update post text on data base
+        post.setText(txtNewText.getText());
     }
 
 }
