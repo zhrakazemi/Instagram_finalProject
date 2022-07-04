@@ -63,6 +63,7 @@ public class ViewPostController {
 
             post.likeAccount.remove(HelloApplication.loggedInAccount);
             int l = GetMaxLike(post.getText(),HelloApplication.loggedInAccount.getUsername()) ;
+            initialize();
             String s = String.format("UPDATE `allposts` SET `like`=%s WHERE `username`='%s' and `text`='%s'",l-1,HelloApplication.loggedInAccount.getUsername(),post.getText()) ;
             MySQLConnection sql = new MySQLConnection();
             Boolean res = sql.ExecuteSQL(s);
@@ -73,13 +74,13 @@ public class ViewPostController {
             post.likeAccount.add(HelloApplication.loggedInAccount);
             post.account.getNotifications().add(new Notification(HelloApplication.loggedInAccount.getUsername() + " liked your post"
                     , post));
+            initialize();
             int l = GetMaxLike(post.getText(),HelloApplication.loggedInAccount.getUsername()) ;
             String s = String.format("UPDATE `allposts` SET `like`=%s WHERE `username`='%s' and `text`='%s'",l+1,HelloApplication.loggedInAccount.getUsername(),post.getText()) ;
             MySQLConnection sql = new MySQLConnection();
             Boolean res = sql.ExecuteSQL(s);
 
         }
-        initialize();
     }
 
     @FXML
@@ -109,6 +110,7 @@ public class ViewPostController {
 
         if (post.disLikeAccount.contains(HelloApplication.loggedInAccount)) {
             post.disLikeAccount.remove(HelloApplication.loggedInAccount);
+            initialize();
             int dl = GetMaxDisLike(post.getText(),HelloApplication.loggedInAccount.getUsername()) ;
             String s = String.format("UPDATE `allposts` SET `dislike`=%s WHERE `username`='%s' and `text`='%s'",dl-1,HelloApplication.loggedInAccount.getUsername(),post.getText()) ;
             MySQLConnection sql = new MySQLConnection();
@@ -118,12 +120,12 @@ public class ViewPostController {
             post.disLikeAccount.add(HelloApplication.loggedInAccount);
             post.account.getNotifications().add(new Notification(HelloApplication.loggedInAccount.getUsername() + " disliked your post"
                     , post));
+            initialize();
             int dl = GetMaxDisLike(post.getText(),HelloApplication.loggedInAccount.getUsername()) ;
             String s = String.format("UPDATE `allposts` SET `dislike`=%s WHERE `username`='%s' and `text`='%s'",dl+1,HelloApplication.loggedInAccount.getUsername(),post.getText()) ;
             MySQLConnection sql = new MySQLConnection();
             Boolean res = sql.ExecuteSQL(s);
         }
-        initialize();
     }
 
     int GetMaxLike (String text,String accName) throws SQLException {
