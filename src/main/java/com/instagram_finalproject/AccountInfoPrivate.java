@@ -35,10 +35,7 @@ package com.instagram_finalproject;
         import javafx.scene.Node;
         import javafx.scene.Parent;
         import javafx.scene.Scene;
-        import javafx.scene.control.Button;
-        import javafx.scene.control.Label;
-        import javafx.scene.control.TableColumn;
-        import javafx.scene.control.TableView;
+        import javafx.scene.control.*;
         import javafx.scene.input.MouseEvent;
         import javafx.stage.Stage;
 
@@ -47,12 +44,7 @@ package com.instagram_finalproject;
 //پیج پرایوت هست و جز فالویینگا نیست
  public class AccountInfoPrivate {
 
-    Account acc ;
-
-    AccountInfoPrivate (Account acc) {
-        this.acc = acc ;
-    }
-
+    static Account acc ;
 
     @FXML
     private TableColumn<?, ?> bio;
@@ -81,7 +73,7 @@ package com.instagram_finalproject;
     @FXML
     void clickHome(MouseEvent event) throws IOException {
         //بره به صفحه اصلی اون اکانت
-        Parent parent = FXMLLoader.load(getClass().getResource("IncorrectPass.fxml"));
+        Parent parent = FXMLLoader.load(HelloApplication.class.getResource("MainPage.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(parent);
         stage.setResizable(false);    //وقتی این فرم ایجاد شده کسی اجازه بزرگتر یا کوچکتر کردن اون رو نداشته باشه
@@ -92,14 +84,11 @@ package com.instagram_finalproject;
 
     @FXML
     void clickFollow(MouseEvent event) throws IOException {
-        Parent parent = FXMLLoader.load(getClass().getResource("IncorrectPass.fxml"));
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(parent);
-        stage.setResizable(false);    //وقتی این فرم ایجاد شده کسی اجازه بزرگتر یا کوچکتر کردن اون رو نداشته باشه
-        stage.setTitle("Instagram");
-        stage.setScene(scene);
-        stage.show();
-
+        acc.getNotifications().add(new Notification(HelloApplication.loggedInAccount.getUsername()+" wants to follow you",HelloApplication.loggedInAccount));
+        Alert alert6 = new Alert(Alert.AlertType.INFORMATION);
+        alert6.setTitle("Instagram");
+        alert6.setContentText("request submitted wait for answer");
+        alert6.showAndWait();
 
     }
 

@@ -10,7 +10,7 @@ public class Account {
     private String email;
     private String birthDate;   //
     private String bio;
-    private boolean privateAccount = false;
+    private boolean privateAccount = true;
     private ArrayList<Account> followings = new ArrayList<>();
     private ArrayList<Account> followers = new ArrayList<>();
     private ArrayList<Post> posts = new ArrayList<>();

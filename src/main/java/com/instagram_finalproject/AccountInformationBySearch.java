@@ -5,11 +5,9 @@ package com.instagram_finalproject;
         import javafx.scene.Node;
         import javafx.scene.Parent;
         import javafx.scene.Scene;
-        import javafx.scene.control.Button;
-        import javafx.scene.control.Label;
-        import javafx.scene.control.TableColumn;
-        import javafx.scene.control.TableView;
+        import javafx.scene.control.*;
         import javafx.scene.input.MouseEvent;
+        import javafx.scene.layout.AnchorPane;
         import javafx.scene.shape.Line;
         import javafx.scene.shape.Rectangle;
         import javafx.stage.Stage;
@@ -20,11 +18,7 @@ package com.instagram_finalproject;
 
 public class AccountInformationBySearch {
 
-    Account acc ;
-    AccountInformationBySearch (Account acc) {
-        this.acc = acc ;
-    }
-
+    static Account acc ;
 
     @FXML
     private TableColumn<?, ?> Bio;
@@ -71,20 +65,19 @@ public class AccountInformationBySearch {
         // درخواست فالو
 
          //
-        Parent parent = FXMLLoader.load(getClass().getResource("IncorrectPass.fxml"));
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(parent);
-        stage.setResizable(false);    //وقتی این فرم ایجاد شده کسی اجازه بزرگتر یا کوچکتر کردن اون رو نداشته باشه
-        stage.setTitle("Instagram");
-        stage.setScene(scene);
-        stage.show();
+        acc.getFollowers().add(HelloApplication.loggedInAccount);
+        HelloApplication.loggedInAccount.getFollowings().add(acc);
+        Alert alert6 = new Alert(Alert.AlertType.INFORMATION);
+        alert6.setTitle("Instagram");
+        alert6.setContentText("submitted");
+        alert6.showAndWait();
 
     }
 
     @FXML
     void clickHome(MouseEvent event) throws IOException {
         //بره به صفحه اصلی اون اکانت
-        Parent parent = FXMLLoader.load(getClass().getResource("IncorrectPass.fxml"));
+        Parent parent = FXMLLoader.load(HelloApplication.class.getResource("MainPage.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(parent);
         stage.setResizable(false);    //وقتی این فرم ایجاد شده کسی اجازه بزرگتر یا کوچکتر کردن اون رو نداشته باشه
@@ -96,14 +89,17 @@ public class AccountInformationBySearch {
 
     @FXML
     void clickPosts(MouseEvent event) throws IOException {
-
-        Parent parent = FXMLLoader.load(getClass().getResource("IncorrectPass.fxml"));
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(parent);
-        stage.setResizable(false);    //وقتی این فرم ایجاد شده کسی اجازه بزرگتر یا کوچکتر کردن اون رو نداشته باشه
-        stage.setTitle("Instagram");
-        stage.setScene(scene);
-        stage.show();
+        PostListController.posts = acc.getPosts();
+        Stage primaryStage = new Stage();
+        AnchorPane root = null;
+        try {
+            root = (AnchorPane) FXMLLoader.load(HelloApplication.class.getResource("PostList.fxml"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        Scene scene = new Scene(root, 400, 700);
+        primaryStage.setScene(scene);
+        primaryStage.show();
 
     }
 

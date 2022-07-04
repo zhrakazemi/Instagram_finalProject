@@ -20,11 +20,7 @@ package com.instagram_finalproject;
 
 public class AccountInfoBySearchFollowing {
 
-    Account acc ;
-    AccountInfoBySearchFollowing (Account acc) {
-        this.acc = acc ;
-    }
-
+    static Account acc ;
 
     @FXML
     private TableColumn<?, ?> Bio;
@@ -62,7 +58,7 @@ public class AccountInfoBySearchFollowing {
     @FXML
     void clickHome(MouseEvent event) throws IOException {
         //بره به صفحه اصلی اون اکانت
-        Parent parent = FXMLLoader.load(getClass().getResource("IncorrectPass.fxml"));
+        Parent parent = FXMLLoader.load(HelloApplication.class.getResource("MainPage.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(parent);
         stage.setResizable(false);    //وقتی این فرم ایجاد شده کسی اجازه بزرگتر یا کوچکتر کردن اون رو نداشته باشه
@@ -73,8 +69,8 @@ public class AccountInfoBySearchFollowing {
 
     @FXML
     void clickPosts(MouseEvent event) throws IOException {
-
-        Parent parent = FXMLLoader.load(getClass().getResource("IncorrectPass.fxml"));
+        PostListController.posts = acc.getPosts();
+        Parent parent = FXMLLoader.load(HelloApplication.class.getResource("PostList.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(parent);
         stage.setResizable(false);    //وقتی این فرم ایجاد شده کسی اجازه بزرگتر یا کوچکتر کردن اون رو نداشته باشه

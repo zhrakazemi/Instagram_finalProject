@@ -1,8 +1,6 @@
 package com.instagram_finalproject;
 
 
-
-
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -18,7 +16,6 @@ import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Register {
@@ -29,10 +26,9 @@ public class Register {
     @FXML
     private Button btn_signUp;
 
-    Label lbl3 = new Label("- Which information do you want to change ?") ;
+    Label lbl3 = new Label("- Which information do you want to change ?");
     @FXML
-    private Label lbl1 ;
-
+    private Label lbl1;
 
 
     @FXML
@@ -51,30 +47,34 @@ public class Register {
     void clickLogin(MouseEvent event) throws IOException, SQLException {
 
 
-        for (int i=0 ; i<Account.AllAccount.size() ; i++)
-        {
-            if ( (Account.AllAccount.get(i).getUsername().equals(txt_AccountName.getText())) && (Account.AllAccount.get(i).getPassword().equals(txt_Password.getText())) ) {
-              // رفتن به صفحه اکانت
+        for (int i = 0; i < Account.AllAccount.size(); i++) {
+            if ((Account.AllAccount.get(i).getUsername().equals(txt_AccountName.getText())) && (Account.AllAccount.get(i).getPassword().equals(txt_Password.getText()))) {
+                HelloApplication.loggedInAccount = Account.AllAccount.get(i);
+                Parent parent = FXMLLoader.load(HelloApplication.class.getResource("MainPage.fxml"));
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                Scene scene = new Scene(parent);
+                stage.setResizable(false);    //وقتی این فرم ایجاد شده کسی اجازه بزرگتر یا کوچکتر کردن اون رو نداشته باشه
+                stage.setTitle("Instagram");
+                stage.setScene(scene);
+                stage.show();
             }
         }
 
-            Parent parent = FXMLLoader.load(getClass().getResource("IncorrectPass.fxml"));
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            Scene scene = new Scene(parent);
-            stage.setResizable(false);    //وقتی این فرم ایجاد شده کسی اجازه بزرگتر یا کوچکتر کردن اون رو نداشته باشه
-            stage.setTitle("Instagram");
-            stage.setScene(scene);
-            stage.show();
-
+        Parent parent = FXMLLoader.load(HelloApplication.class.getResource("IncorrectPass.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(parent);
+        stage.setResizable(false);    //وقتی این فرم ایجاد شده کسی اجازه بزرگتر یا کوچکتر کردن اون رو نداشته باشه
+        stage.setTitle("Instagram");
+        stage.setScene(scene);
+        stage.show();
 
 
     }
 
     @FXML
-    void clickSignUp(MouseEvent event) throws IOException
-    {
-        Parent parent = FXMLLoader.load(getClass().getResource("SignUp.fxml"));
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow() ;
+    void clickSignUp(MouseEvent event) throws IOException {
+        Parent parent = FXMLLoader.load(HelloApplication.class.getResource("SignUp.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(parent);
         stage.setResizable(false);    //وقتی این فرم ایجاد شده کسی اجازه بزرگتر یا کوچکتر کردن اون رو نداشته باشه
         stage.setTitle("Instagram");

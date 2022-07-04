@@ -15,9 +15,7 @@
       <Rectangle fx:id="rectangle" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="679.0" layoutX="9.0" layoutY="11.0" stroke="BLACK" strokeType="INSIDE" width="288.0" />
       <TextField fx:id="txt_AccountName" layoutX="26.0" layoutY="205.0" prefHeight="34.0" prefWidth="250.0" promptText="AccountName" />
       <ImageView fx:id="picInsta" fitHeight="130.0" fitWidth="250.0" layoutX="28.0" layoutY="83.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="C:\Users\TAK\Desktop\InstaImage\2.png" />
-         </image>
+
       </ImageView>
       <PasswordField fx:id="txt_Password" layoutX="26.0" layoutY="253.0" prefHeight="34.0" prefWidth="250.0" promptText="Password" />
       <Button fx:id="btn_login" layoutX="25.0" layoutY="325.0" mnemonicParsing="false" onMouseClicked="#clickLogin" prefHeight="34.0" prefWidth="250.0" style="-fx-background-color: blue;" text="Log In" textFill="WHITE">

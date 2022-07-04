@@ -6,6 +6,7 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Stage;
 
 public class NotFind {
 
@@ -31,7 +32,8 @@ public class NotFind {
     void clickOK(MouseEvent event)
     {
         //برمیگرده به صفحه کاربر
-
+        Stage stage = (Stage) btn_OK.getScene().getWindow();
+        stage.close();
     }
 
 }
