@@ -17,8 +17,8 @@ public class Account {
     private ArrayList<Message> messages = new ArrayList<>();
     private ArrayList<Notification> notifications = new ArrayList<>();
     static ArrayList<Account> AllAccount = new ArrayList<>();
-
-   public  ArrayList<Post>SavedPosts = new ArrayList<>();
+    public ArrayList<Post>SavedPosts = new ArrayList<>();
+    private ArrayList<Post> seenPosts=new ArrayList<>();
 ////////////////////////////////////// Set & Get  //////////////////////////////////////
 
     public String getUsername() {
@@ -133,6 +133,14 @@ public class Account {
         this.messages = messages;
     }
     ///////////////////////////////////////////////////////////////////////////////////////////////////
+
+    public ArrayList<Post> getSeenPosts() {
+        return seenPosts;
+    }
+
+    public void setSeenPosts(ArrayList<Post> seenPosts) {
+        this.seenPosts = seenPosts;
+    }
 
     public Account(String username, String password, String name, String lastName, String email, String birthDate, String bio) {
         this.username = username;

@@ -6,7 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
 public class CommntPageController {
-Post post = null;
+    static Post post = null;
     @FXML
     private Button btnDone;
 

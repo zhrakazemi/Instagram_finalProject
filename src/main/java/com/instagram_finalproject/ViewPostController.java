@@ -28,6 +28,7 @@ public class ViewPostController {
         for (Comment a : post.getCommentAccount())
             observableList.add(a.getCom());
         lvComments.setItems(observableList);
+        HelloApplication.loggedInAccount.getSeenPosts().add(post);
     }
 
     @FXML
@@ -57,11 +58,11 @@ public class ViewPostController {
     void pressOnBtnLike(ActionEvent event) throws SQLException {
 
         //تعداد لایک این پست
-        int l = GetMaxLike(post.getText(),HelloApplication.loggedInAccount.getUsername()) ;
 
         if (post.likeAccount.contains(HelloApplication.loggedInAccount)) {
 
             post.likeAccount.remove(HelloApplication.loggedInAccount);
+            int l = GetMaxLike(post.getText(),HelloApplication.loggedInAccount.getUsername()) ;
             String s = String.format("UPDATE `allposts` SET `like`=%s WHERE `username`='%s' and `text`='%s'",l-1,HelloApplication.loggedInAccount.getUsername(),post.getText()) ;
             MySQLConnection sql = new MySQLConnection();
             Boolean res = sql.ExecuteSQL(s);
@@ -72,7 +73,7 @@ public class ViewPostController {
             post.likeAccount.add(HelloApplication.loggedInAccount);
             post.account.getNotifications().add(new Notification(HelloApplication.loggedInAccount.getUsername() + " liked your post"
                     , post));
-
+            int l = GetMaxLike(post.getText(),HelloApplication.loggedInAccount.getUsername()) ;
             String s = String.format("UPDATE `allposts` SET `like`=%s WHERE `username`='%s' and `text`='%s'",l+1,HelloApplication.loggedInAccount.getUsername(),post.getText()) ;
             MySQLConnection sql = new MySQLConnection();
             Boolean res = sql.ExecuteSQL(s);
@@ -83,8 +84,7 @@ public class ViewPostController {
 
     @FXML
     void pressOnbtnComment(ActionEvent event) {
-        Stage stage = (Stage) btnComment.getScene().getWindow();
-        stage.close();
+        CommntPageController.post=post;
         Stage primaryStage = new Stage();
         AnchorPane root = null;
         try {
@@ -105,12 +105,11 @@ public class ViewPostController {
     void pressonbtnDislike(ActionEvent event) throws SQLException {
 
         //تعداد  دیس لایک این پست
-        int dl = GetMaxDisLike(post.getText(),HelloApplication.loggedInAccount.getUsername()) ;
 
 
         if (post.disLikeAccount.contains(HelloApplication.loggedInAccount)) {
             post.disLikeAccount.remove(HelloApplication.loggedInAccount);
-
+            int dl = GetMaxDisLike(post.getText(),HelloApplication.loggedInAccount.getUsername()) ;
             String s = String.format("UPDATE `allposts` SET `dislike`=%s WHERE `username`='%s' and `text`='%s'",dl-1,HelloApplication.loggedInAccount.getUsername(),post.getText()) ;
             MySQLConnection sql = new MySQLConnection();
             Boolean res = sql.ExecuteSQL(s);
@@ -119,7 +118,7 @@ public class ViewPostController {
             post.disLikeAccount.add(HelloApplication.loggedInAccount);
             post.account.getNotifications().add(new Notification(HelloApplication.loggedInAccount.getUsername() + " disliked your post"
                     , post));
-
+            int dl = GetMaxDisLike(post.getText(),HelloApplication.loggedInAccount.getUsername()) ;
             String s = String.format("UPDATE `allposts` SET `dislike`=%s WHERE `username`='%s' and `text`='%s'",dl+1,HelloApplication.loggedInAccount.getUsername(),post.getText()) ;
             MySQLConnection sql = new MySQLConnection();
             Boolean res = sql.ExecuteSQL(s);

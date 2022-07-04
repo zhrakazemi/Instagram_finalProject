@@ -23,8 +23,7 @@ public class ShowListController {
         ObservableList<String> observableList = FXCollections.observableArrayList();
         for(Account account : accounts){
             observableList.add(account.getUsername());
-            lvList.setItems(observableList);
         }
-
+        lvList.setItems(observableList);
     }
 }

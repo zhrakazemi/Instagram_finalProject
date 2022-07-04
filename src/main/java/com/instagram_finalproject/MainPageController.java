@@ -20,6 +20,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class MainPageController {
     public void initialize() {
@@ -31,6 +32,15 @@ public class MainPageController {
         for (Notification a : HelloApplication.loggedInAccount.getNotifications())
             observableList.add(i++ + ". " + a.getText());
         notificationListView.setItems(observableList);
+        ObservableList<String> observableList2 = FXCollections.observableArrayList();
+        i = 1;
+        for (Account a : HelloApplication.loggedInAccount.getFollowings())
+            for (Post b : a.getPosts())
+                if (!HelloApplication.loggedInAccount.getSeenPosts().contains(a)) {
+                    observableList2.add(i++ + ". " + b.getText());
+                    posts.add(b);
+                }
+        homeListview.setItems(observableList2);
     }
 
     @FXML
@@ -144,7 +154,7 @@ public class MainPageController {
 
     @FXML
     void clickSearch(MouseEvent event) throws IOException {
-
+        boolean find = false;
         for (int i = 0; i < Account.AllAccount.size(); i++) {
 
             if (Account.AllAccount.get(i).getUsername().equals(txt_accountname.getText())) {
@@ -152,6 +162,7 @@ public class MainPageController {
                 //پس فرقی نداره پرایوت بودن یا نبودن
                 for (int j = 0; j < HelloApplication.loggedInAccount.getFollowings().size(); j++) {
                     if (HelloApplication.loggedInAccount.getFollowings().get(i).equals(Account.AllAccount.get(i))) {
+                        find = true;
                         AccountInfoBySearchFollowing.acc = Account.AllAccount.get(i);
                         Parent parent = FXMLLoader.load(HelloApplication.class.getResource("AccountInfoBySearchFollowing.fxml"));
                         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -170,6 +181,7 @@ public class MainPageController {
                 if (Account.AllAccount.get(i).isPrivateAccount()) {
 
                     // صفحه پابلیک هست و جز فالویینگ های اکانت نیست
+                    find = true;
                     AccountInformationBySearch.acc = Account.AllAccount.get(i);
                     Parent parent = FXMLLoader.load(HelloApplication.class.getResource("AccountInformationBySearch.fxml"));
                     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -181,6 +193,7 @@ public class MainPageController {
 
                 } else {
                     // صفحه پرایوت هست و جز فالویینگ های اکانت نیست
+                    find = true;
                     AccountInfoPrivate.acc = Account.AllAccount.get(i);
                     Parent parent = FXMLLoader.load(HelloApplication.class.getResource("AccountInfoPrivate.fxml"));
                     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -196,19 +209,21 @@ public class MainPageController {
         }
 
         //وقتی اکانت پیدا نشد
-        Stage primaryStage = new Stage();
-        AnchorPane root = null;
-        try {
-            root = (AnchorPane) FXMLLoader.load(HelloApplication.class.getResource("NotFind.fxml"));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        Scene scene = new Scene(root);
-        primaryStage.setResizable(false);    //وقتی این فرم ایجاد شده کسی اجازه بزرگتر یا کوچکتر کردن اون رو نداشته باشه
-        primaryStage.setTitle("Instagram");
-        primaryStage.setScene(scene);
-        primaryStage.show();
 
+        if (!find) {
+            Stage primaryStage = new Stage();
+            AnchorPane root = null;
+            try {
+                root = (AnchorPane) FXMLLoader.load(HelloApplication.class.getResource("NotFind.fxml"));
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            Scene scene = new Scene(root);
+            primaryStage.setResizable(false);    //وقتی این فرم ایجاد شده کسی اجازه بزرگتر یا کوچکتر کردن اون رو نداشته باشه
+            primaryStage.setTitle("Instagram");
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        }
 
     }
 
@@ -256,8 +271,6 @@ public class MainPageController {
     void onNotificationListViewClick(MouseEvent event) {
         if (HelloApplication.loggedInAccount.getNotifications().get(notificationListView.getSelectionModel().getSelectedIndex()).getAccount() != null) {
             AcceptRequestsController.notification = HelloApplication.loggedInAccount.getNotifications().get(notificationListView.getSelectionModel().getSelectedIndex());
-            Stage stage = (Stage) notificationListView.getScene().getWindow();
-            stage.close();
             Stage primaryStage = new Stage();
             AnchorPane root = null;
             try {
@@ -270,8 +283,6 @@ public class MainPageController {
             primaryStage.show();
         } else if (HelloApplication.loggedInAccount.getNotifications().get(notificationListView.getSelectionModel().getSelectedIndex()).getPost() != null) {
             ViewPostController.post = HelloApplication.loggedInAccount.getNotifications().get(notificationListView.getSelectionModel().getSelectedIndex()).getPost();
-            Stage stage = (Stage) notificationListView.getScene().getWindow();
-            stage.close();
             Stage primaryStage = new Stage();
             AnchorPane root = null;
             try {
@@ -284,8 +295,6 @@ public class MainPageController {
             primaryStage.show();
         } else {
             ChatPanelController.message = HelloApplication.loggedInAccount.getNotifications().get(notificationListView.getSelectionModel().getSelectedIndex()).getMessage();
-            Stage stage = (Stage) notificationListView.getScene().getWindow();
-            stage.close();
             Stage primaryStage = new Stage();
             AnchorPane root = null;
             try {
@@ -299,4 +308,42 @@ public class MainPageController {
         }
     }
 
+    @FXML
+    private Button messengerBtn;
+
+
+    @FXML
+    void onMessengerBtnClick(ActionEvent event) {
+        Stage primaryStage = new Stage();
+        AnchorPane root = null;
+        try {
+            root = (AnchorPane) FXMLLoader.load(HelloApplication.class.getResource("MessagePanel.fxml"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        Scene scene = new Scene(root, 400, 700);
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+
+
+    @FXML
+    private ListView<String> homeListview;
+
+    @FXML
+    void onHomeListviewClick(MouseEvent event) {
+        ViewPostController.post = posts.get(homeListview.getSelectionModel().getSelectedIndex());
+        Stage primaryStage = new Stage();
+        AnchorPane root = null;
+        try {
+            root = (AnchorPane) FXMLLoader.load(HelloApplication.class.getResource("ViewPost.fxml"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        Scene scene = new Scene(root, 400, 700);
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+
+    ArrayList<Post> posts = new ArrayList<>();
 }

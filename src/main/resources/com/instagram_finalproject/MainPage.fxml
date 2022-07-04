@@ -6,7 +6,6 @@
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.paint.Color?>
@@ -112,7 +111,7 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Button>
-                  <Button fx:id="btnAddPost" layoutX="139.0" layoutY="472.0" mnemonicParsing="false" onAction="#pressOnBtnAddPost" text="Add a New Post">
+                  <Button fx:id="btnAddPost" layoutX="139.0" layoutY="458.0" mnemonicParsing="false" onAction="#pressOnBtnAddPost" text="Add a New Post">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
@@ -126,13 +125,21 @@
                   <Line endX="-0.5" endY="69.0" layoutX="15.0" layoutY="558.0" startX="0.5" startY="-548.5" />
                   <Line endX="266.5" layoutX="116.0" layoutY="9.0" startX="-100.0" />
                   <Line endX="82.0" endY="514.0" layoutX="301.0" layoutY="114.0" startX="82.0" startY="-104.5" />
+                  <Button fx:id="messengerBtn" layoutX="157.0" layoutY="500.0" mnemonicParsing="false" onAction="#onMessengerBtnClick" text="Messenger">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Button>
                </children>
             </AnchorPane>
          </content>
     </Tab>
-      <Tab text="Untitled Tab">
+      <Tab text="Home">
         <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <ListView fx:id="homeListview" layoutX="13.0" layoutY="78.0" onMouseClicked="#onHomeListviewClick" prefHeight="579.0" prefWidth="375.0" />
+               </children></AnchorPane>
         </content>
       </Tab>
   </tabs>

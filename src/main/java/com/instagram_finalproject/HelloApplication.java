@@ -16,8 +16,11 @@ public class HelloApplication extends Application {
 
     @Override
     public void start(Stage stage) throws IOException, SQLException {
-
-
+        Account.AllAccount.add(new Account("zahra","123","zahra","kazemi","1","1","hello"));
+        Account.AllAccount.add(new Account("parnian","123","parnian","alasvandian","1","1","hi"));
+        Post temp=new Post("first post",Account.AllAccount.get(0));
+        Account.AllAccount.get(0).getPosts().add(temp);
+        allPosts.add(temp);
          //////
                 MySQLConnection sql = new MySQLConnection() ;
                 String s = "SELECT * FROM allaccounts" ;

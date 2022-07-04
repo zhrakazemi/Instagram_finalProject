@@ -21,6 +21,7 @@ public class ViewSavedPostController {
 
     @FXML
     void pressOnSavedPost(MouseEvent event) {
+        ViewPostController.post=HelloApplication.loggedInAccount.getPosts().get(lvSavedPosts.getSelectionModel().getSelectedIndex());
         Stage stage = (Stage) lvSavedPosts.getScene().getWindow();
         stage.close();
         Stage primaryStage = new Stage();
