@@ -59,7 +59,7 @@ public class HelloApplication extends Application {
                     // هر اکانتی که پابلیک هست پستش بیاد تو این اری لیست
 
                  MySQLConnection sql2 = new MySQLConnection() ;
-                 String s2 = String.format("SELECT * FROM allposts WHERE private='%s'","false") ;
+                 String s2 = String.format("SELECT * FROM allposts WHERE private=%s",0) ;
                  ResultSet res2 = sql2.ExecuteQuery(s2);
 
                 if (res2==null)
