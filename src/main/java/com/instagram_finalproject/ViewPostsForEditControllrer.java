@@ -1,6 +1,6 @@
 package com.instagram_finalproject;
 
-import javafx.collections.FXCollections;
+ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,20 +12,21 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+import static com.instagram_finalproject.PostListController.posts;
+
 public class ViewPostsForEditControllrer {
 
     @FXML
-    private ListView<String> lvAlPosts;
+    private ListView<?> lvAlPosts;
     public void initialize() {
         ObservableList<String> observableList = FXCollections.observableArrayList();
         int i = 1;
         for (Post a : HelloApplication.loggedInAccount.getPosts())
             observableList.add(i++ + ". " + a.getText());
-        lvAlPosts.setItems(observableList);
+        observableList.setAll(observableList);
     }
-    @FXML
+
     void onPostsListviewClick(MouseEvent event) {
-        EditPostController.post=HelloApplication.loggedInAccount.getPosts().get(lvAlPosts.getSelectionModel().getSelectedIndex());
         Stage stage = (Stage) lvAlPosts.getScene().getWindow();
         stage.close();
         Stage primaryStage = new Stage();
