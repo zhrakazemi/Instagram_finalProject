@@ -32,7 +32,7 @@ public class IncorrectPass {
 
     @FXML
     void clickOk(MouseEvent event) throws IOException {
-        Parent parent = FXMLLoader.load(getClass().getResource("Register.fxml"));
+        Parent parent = FXMLLoader.load(HelloApplication.class.getResource("Register.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow() ;
         Scene scene = new Scene(parent);
         stage.setResizable(false);    //وقتی این فرم ایجاد شده کسی اجازه بزرگتر یا کوچکتر کردن اون رو نداشته باشه

@@ -34,7 +34,7 @@ public class NotFindPopular {
     @FXML
     void clickHome(MouseEvent event) throws IOException {
         //بره به صفحه اکانت
-        Parent parent = FXMLLoader.load(getClass().getResource("AccountInfoBySearchFollowing.fxml"));
+        Parent parent = FXMLLoader.load(HelloApplication.class.getResource("AccountInfoBySearchFollowing.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow() ;
         Scene scene = new Scene(parent);
         stage.setResizable(false);    //وقتی این فرم ایجاد شده کسی اجازه بزرگتر یا کوچکتر کردن اون رو نداشته باشه
