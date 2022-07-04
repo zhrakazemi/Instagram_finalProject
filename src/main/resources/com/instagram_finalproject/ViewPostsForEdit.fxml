@@ -4,10 +4,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
 
-
 <AnchorPane prefHeight="700.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.instagram_finalproject.ViewPostsForEditControllrer">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="680.0" layoutX="12.0" layoutY="10.0" stroke="BLACK" strokeType="INSIDE" width="376.0" />
-      <ListView fx:id="lvAlPosts" layoutX="29.0" layoutY="31.0" prefHeight="639.0" prefWidth="342.0" />
+      <ListView fx:id="lvAlPosts" layoutX="29.0" layoutY="31.0" onMouseClicked="#onPostsListviewClick" prefHeight="639.0" prefWidth="342.0" />
    </children>
 </AnchorPane>
